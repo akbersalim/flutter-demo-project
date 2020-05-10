@@ -12,6 +12,7 @@ class ViewAll extends StatelessWidget {
     {"name": "Mob", "age": "21", "rollno": 10, "paidstatus": false},
     {"name": "Bryan", "age": "25", "rollno": 11, "paidstatus": true},
     {"name": "Kim", "age": "25", "rollno": 12, "paidstatus": false},
+    {"name": "Jim", "age": "26", "rollno": 12, "paidstatus": true},
   ];
 
   @override
@@ -27,7 +28,7 @@ class ViewAll extends StatelessWidget {
             elevation: 3.0,
             child: ListTile(
               leading: Icon(
-                Icons.perm_identity,
+                Icons.account_circle,
                 size: 40.0,
               ),
               trailing: data[index]["paidstatus"]
