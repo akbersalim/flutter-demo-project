@@ -12,7 +12,7 @@ class ViewAll extends StatelessWidget {
     {"name": "Mob", "age": "21", "rollno": 10, "paidstatus": false},
     {"name": "Bryan", "age": "25", "rollno": 11, "paidstatus": true},
     {"name": "Kim", "age": "25", "rollno": 12, "paidstatus": false},
-    {"name": "Jim", "age": "26", "rollno": 12, "paidstatus": true},
+    {"name": "Jim", "age": "26", "rollno": 13, "paidstatus": true},
   ];
 
   @override
