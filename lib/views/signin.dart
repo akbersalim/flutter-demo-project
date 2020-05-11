@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermbcetapp/views/signin.dart';
 
-class Register extends StatelessWidget {
-
+class MyLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MyBody();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(body: SignIn()),
+    );
   }
 }
 
-class MyBody extends StatelessWidget {
+class SignIn extends StatelessWidget {
   TextEditingController namecontroller = TextEditingController();
   TextEditingController rollnocontroller = TextEditingController();
   TextEditingController admnocontroller = TextEditingController();
