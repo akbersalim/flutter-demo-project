@@ -18,7 +18,7 @@ class MyLogin extends StatelessWidget {
               color: Colors.white,
             ),
             title: Text(
-              "WELOCOME",
+              "WELCOME",
               style: TextStyle(
                   letterSpacing: 3.0, fontSize: 25.0, color: Colors.white),
             ),
