@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermbcetapp/views/register.dart';
 import 'package:fluttermbcetapp/views/signin.dart';
 import 'package:fluttermbcetapp/views/viewall.dart';
 
-void main() => runApp(MBCET());
+void main() => runApp(MBCET("admin","12345"));
 
 class MBCET extends StatelessWidget {
+  MBCET(this.name,this.pass);
+  var name,pass;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,12 +25,14 @@ class MBCET extends StatelessWidget {
             ),
             centerTitle: true,
           ),
-          body: LogIn()),
+          body: LogIn(name,pass)),
     );
   }
 }
 
 class LogIn extends StatelessWidget {
+  var name,pass;
+  LogIn(this.name,this.pass);
   TextEditingController nam = TextEditingController();
   TextEditingController pas = TextEditingController();
 
@@ -65,10 +68,10 @@ class LogIn extends StatelessWidget {
           GestureDetector(
             onTap: () {
               print("hello");
-              var name = nam.text;
-              var pass = pas.text;
+              var na = nam.text;
+              var pa = pas.text;
               print(name);
-              if (name == "admin" && pass == "12345") {
+              if (name == na && pass == pa) {
                 print("Login Successful");
                 Navigator.push(
                   context,

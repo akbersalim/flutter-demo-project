@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermbcetapp/main.dart';
 
 class MyLogin extends StatelessWidget {
   @override
@@ -100,6 +101,9 @@ class SignIn extends StatelessWidget {
                           print(getAdno);
                           print(getUser);
                           print(getPass);
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context)=>MBCET(getName,getPass)
+                          ));
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -127,7 +131,7 @@ class SignIn extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => MyLogin()));
+                                  builder: (context) => MBCET("admin","12345")));
                         },
                         child: InkWell(
                           child: Container(

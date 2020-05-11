@@ -13,7 +13,7 @@ import 'package:fluttermbcetapp/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MBCET());
+    await tester.pumpWidget(MBCET("admin","12345"));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
