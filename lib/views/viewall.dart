@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermbcetapp/main.dart';
 
 class ViewAll extends StatelessWidget {
+  ViewAll(this.name,this.pass);
+  var name,pass;
   var data = [
     {
       "name": "Reuel",
@@ -96,39 +99,47 @@ class ViewAll extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-          body: Container(
-              child: ListView.builder(
-        itemCount: data.length,
-        itemBuilder: (context, index) {
-          return Card(
-            elevation: 3.0,
-            child: ListTile(
-              leading: ClipOval(
-                child: Image(
-                  image: NetworkImage(data[index]["image"]),
-                ),
-              ),
-              trailing: data[index]["paidstatus"]
-                  ? FlatButton(child: Text("Paid"))
-                  : FlatButton(
-                      onPressed: () {
-                        print("Clicked");
-                      },
-                      child: Text("Pay Now")),
-              title: Text(
-                "Name: " + data[index]["name"],
-                style: TextStyle(color: Colors.purple),
-              ),
-              subtitle: Text("Age: " +
-                  data[index]["age"].toString() +
-                  "\n" +
-                  "Roll No: " +
-                  data[index]["rollno"].toString()),
-            ),
-          );
+      home: GestureDetector(
+        onTap: (){
+          Navigator.push(context, MaterialPageRoute(
+              builder: (context)=>MBCET(name, pass)
+          ));
         },
-      ))),
+        child: Scaffold(
+            body: Container(
+                child: ListView.builder(
+          itemCount: data.length,
+          itemBuilder: (context, index) {
+            return Card(
+              elevation: 3.0,
+              child: ListTile(
+                leading: ClipOval(
+                  child: Image(
+                    image: NetworkImage(data[index]["image"]),
+                    height: 40.0,
+                  ),
+                ),
+                trailing: data[index]["paidstatus"]
+                    ? FlatButton(child: Text("Paid"))
+                    : FlatButton(
+                        onPressed: () {
+                          print("Clicked");
+                        },
+                        child: Text("Pay Now")),
+                title: Text(
+                  "Name: " + data[index]["name"],
+                  style: TextStyle(color: Colors.purple),
+                ),
+                subtitle: Text("Age: " +
+                    data[index]["age"].toString() +
+                    "\n" +
+                    "Roll No: " +
+                    data[index]["rollno"].toString()),
+              ),
+            );
+          },
+        ))),
+      ),
     );
   }
 }

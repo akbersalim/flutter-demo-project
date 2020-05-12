@@ -2,16 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:fluttermbcetapp/main.dart';
 
 class MyLogin extends StatelessWidget {
+  MyLogin(this.name, this.pass);
+
+  var name, pass;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(body: SignIn()),
+      home: Scaffold(body: SignIn(name, pass)),
     );
   }
 }
 
 class SignIn extends StatelessWidget {
+  SignIn(this.name, this.pass);
+
+  var name, pass;
   TextEditingController namecontroller = TextEditingController();
   TextEditingController rollnocontroller = TextEditingController();
   TextEditingController admnocontroller = TextEditingController();
@@ -101,9 +108,11 @@ class SignIn extends StatelessWidget {
                           print(getAdno);
                           print(getUser);
                           print(getPass);
-                          Navigator.push(context, MaterialPageRoute(
-                            builder: (context)=>MBCET(getName,getPass)
-                          ));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      MBCET(getName, getPass)));
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -131,7 +140,7 @@ class SignIn extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => MBCET("admin","12345")));
+                                  builder: (context) => MBCET(name, pass)));
                         },
                         child: InkWell(
                           child: Container(
