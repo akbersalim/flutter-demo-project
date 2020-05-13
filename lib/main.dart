@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermbcetapp/views/counter.dart';
 import 'package:fluttermbcetapp/views/display.dart';
 import 'package:fluttermbcetapp/views/signin.dart';
-import 'package:fluttermbcetapp/views/viewall.dart';
+import 'package:fluttermbcetapp/views/viewandadd.dart';
 
 void main() => runApp(MBCET("admin", "12345"));
 
@@ -84,7 +83,7 @@ class LogIn extends StatelessWidget {
                 print("Login Successful");
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyCounterApp(name,pass)),
+                  MaterialPageRoute(builder: (context) => ViewAll(name, pass)),
                 );
               } else {
                 print("Wrong UserName or Passord");
