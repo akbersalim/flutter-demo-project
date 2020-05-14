@@ -90,28 +90,48 @@ class _MyBodyState extends State<MyBody> {
             TextField(
               controller: namecontroller,
               decoration: InputDecoration(
-                  hintText: "Enter name:", border: OutlineInputBorder()),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.purple, width: 2.0),
+                  ),
+                  labelText: "Enter name ",
+                  labelStyle: TextStyle(color: Colors.purple),
+                  hintText: "Name:",
+                  border: OutlineInputBorder()),
             ),
             SizedBox(height: 10),
             TextField(
+              keyboardType: TextInputType.numberWithOptions(),
               controller: agecontroller,
               decoration: InputDecoration(
-                  hintText: "Enter age:", border: OutlineInputBorder()),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.purple, width: 2.0),
+                  ),
+                  labelText: "Enter age ",
+                  labelStyle: TextStyle(color: Colors.purple),
+                  hintText: "Age:",
+                  border: OutlineInputBorder()),
             ),
             SizedBox(height: 10),
             TextField(
+              keyboardType: TextInputType.numberWithOptions(),
               controller: rnocontroller,
               decoration: InputDecoration(
-                  hintText: "Enter roll no:", border: OutlineInputBorder()),
-            ),
-            SizedBox(
-              height: 10.0,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.purple, width: 2.0),
+                  ),
+                  labelText: "Enter roll no: ",
+                  labelStyle: TextStyle(color: Colors.purple),
+                  hintText: "Roll No:",
+                  border: OutlineInputBorder()),
             ),
             RaisedButton(
               onPressed: () {
                 var nam = namecontroller.text;
                 var rno = rnocontroller.text;
                 var ag = agecontroller.text;
+                namecontroller.clear();
+                rnocontroller.clear();
+                agecontroller.clear();
                 setState(() {
                   name.add(nam.toString());
                   rollno.add(int.parse(rno));
@@ -135,12 +155,14 @@ class _MyBodyState extends State<MyBody> {
                   return Card(
                     elevation: 3.0,
                     child: ListTile(
-                      leading: ClipOval(
+                      leading: Icon(Icons.account_circle),
+
+                      /*ClipOval(
                         child: Image(
                           image: NetworkImage(imag[index]),
                           height: 40.0,
                         ),
-                      ),
+                      ),*/
                       trailing: paidstatus[index]
                           ? FlatButton(child: Text("Paid"))
                           : FlatButton(

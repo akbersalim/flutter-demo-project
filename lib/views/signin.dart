@@ -53,25 +53,27 @@ class SignIn extends StatelessWidget {
                       TextField(
                         controller: namecontroller,
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
                             hintText: "Enter Name"),
                       ),
                       SizedBox(
                         height: 10.0,
                       ),
                       TextField(
+                        keyboardType: TextInputType.numberWithOptions(),
                         controller: rollnocontroller,
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
                             hintText: "Enter Roll No:"),
                       ),
                       SizedBox(
                         height: 10.0,
                       ),
                       TextField(
+                        keyboardType: TextInputType.numberWithOptions(),
                         controller: admnocontroller,
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
                             hintText: "Enter Admission No:"),
                       ),
                       SizedBox(
@@ -80,7 +82,7 @@ class SignIn extends StatelessWidget {
                       TextField(
                         controller: usercontroller,
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
                             hintText: "Enter Username"),
                       ),
                       SizedBox(
@@ -90,7 +92,7 @@ class SignIn extends StatelessWidget {
                         controller: passcontroller,
                         obscureText: true,
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
                             hintText: "Enter Password"),
                       ),
                       SizedBox(

@@ -57,7 +57,10 @@ class LogIn extends StatelessWidget {
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.account_circle),
                 hintText: "Name",
-                border: OutlineInputBorder()),
+                labelText: "Enter Name",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0)
+                )),
           ),
           SizedBox(
             height: 10.0,
@@ -67,8 +70,9 @@ class LogIn extends StatelessWidget {
             obscureText: true,
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.lock_outline),
+                labelText: "Enter Password",
                 hintText: "Password:",
-                border: OutlineInputBorder()),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
           ),
           SizedBox(
             height: 10.0,
