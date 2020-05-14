@@ -124,7 +124,15 @@ class _MyBodyState extends State<MyBody> {
                   hintText: "Roll No:",
                   border: OutlineInputBorder()),
             ),
-            RaisedButton(
+            SizedBox(height: 10.0,),
+            MaterialButton(
+              color: Colors.grey,
+              focusColor: Colors.white,
+              splashColor: Colors.purple,
+              elevation: 10.0,
+              highlightElevation: 2.0,
+              height: 40.0,
+              minWidth: 90.0,
               onPressed: () {
                 var nam = namecontroller.text;
                 var rno = rnocontroller.text;
@@ -147,15 +155,18 @@ class _MyBodyState extends State<MyBody> {
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height-300,
+              height: MediaQuery.of(context).size.height - 300,
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: name.length,
+                itemCount: name.length == null ? 0 : name.length,
                 itemBuilder: (context, index) {
                   return Card(
                     elevation: 3.0,
                     child: ListTile(
-                      leading: Icon(Icons.account_circle),
+                      leading: Icon(
+                        Icons.account_circle,
+                        size: 50.0,
+                      ),
 
                       /*ClipOval(
                         child: Image(
@@ -165,9 +176,14 @@ class _MyBodyState extends State<MyBody> {
                       ),*/
                       trailing: paidstatus[index]
                           ? FlatButton(child: Text("Paid"))
-                          : FlatButton(
+                          : MaterialButton(
+                        color: Colors.purple,
+                              colorBrightness: Brightness.dark,
                               onPressed: () {
                                 print("Clicked");
+                                setState(() {
+                                  paidstatus[index] = true;
+                                });
                               },
                               child: Text("Pay Now")),
                       title: Text(

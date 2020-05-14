@@ -7,6 +7,7 @@ class Display extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: GestureDetector(
         onTap: (){
           Navigator.push(context, MaterialPageRoute(
@@ -15,13 +16,22 @@ class Display extends StatelessWidget {
         },
         child: Scaffold(
           body: Container(
-            margin: EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Center(child: Text((t+"\nTap Anywhere to return")))
-              ],
+            height: double.infinity,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("images/background1.jpeg"),fit: BoxFit.cover
+                )
+            ),
+            child: Container(
+              margin: EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Center(child: Text((t+"\nTap Anywhere to return")))
+                ],
+              ),
             ),
           ),
         ),

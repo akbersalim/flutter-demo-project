@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermbcetapp/views/counter.dart';
 import 'package:fluttermbcetapp/views/display.dart';
 import 'package:fluttermbcetapp/views/signin.dart';
 import 'package:fluttermbcetapp/views/viewandadd.dart';
@@ -59,8 +60,7 @@ class LogIn extends StatelessWidget {
                 hintText: "Name",
                 labelText: "Enter Name",
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0)
-                )),
+                    borderRadius: BorderRadius.circular(10.0))),
           ),
           SizedBox(
             height: 10.0,
@@ -72,41 +72,46 @@ class LogIn extends StatelessWidget {
                 prefixIcon: Icon(Icons.lock_outline),
                 labelText: "Enter Password",
                 hintText: "Password:",
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0))),
           ),
           SizedBox(
             height: 10.0,
           ),
-          GestureDetector(
-            onTap: () {
-              print("hello");
-              var na = nam.text;
-              var pa = pas.text;
-              print(na);
-              if (name == na && pass == pa) {
-                print("Login Successful");
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ViewAll(name, pass)),
-                );
-              } else {
-                print("Wrong UserName or Passord");
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context)=>Display(name, pass, "wrong password "+name)
-                ));
-              }
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.pink,
-                  borderRadius: BorderRadius.circular(10.0)),
-              height: 50.0,
-              width: double.infinity,
-              child: Center(
-                child: Text(
-                  "LOG IN",
-                  style: TextStyle(fontSize: 23.0, color: Colors.white),
-                  textAlign: TextAlign.center,
+          InkWell(
+            child: GestureDetector(
+              onTap: () {
+                print("hello");
+                var na = nam.text;
+                var pa = pas.text;
+                print(na);
+                if (name == na && pass == pa) {
+                  print("Login Successful");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ViewAll(name, pass)),
+                  );
+                } else {
+                  print("Wrong UserName or Passord");
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Display(name, pass, "wrong password " + name)));
+                }
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.pink,
+                    borderRadius: BorderRadius.circular(10.0)),
+                height: 50.0,
+                width: double.infinity,
+                child: Center(
+                  child: Text(
+                    "LOG IN",
+                    style: TextStyle(fontSize: 23.0, color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
             ),
