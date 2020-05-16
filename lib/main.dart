@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermbcetapp/views/counter.dart';
 import 'package:fluttermbcetapp/views/display.dart';
+import 'package:fluttermbcetapp/views/menu.dart';
 import 'package:fluttermbcetapp/views/signin.dart';
+import 'package:fluttermbcetapp/views/view%20try.dart';
+import 'package:fluttermbcetapp/views/viewall.dart';
 import 'package:fluttermbcetapp/views/viewandadd.dart';
 
 void main() => runApp(MBCET("admin", "12345"));
@@ -11,9 +13,6 @@ class MBCET extends StatelessWidget {
 
   var name, pass;
 
-  /*var details = [
-    {"name": "admin", "pass": "12345"}
-  ];*/
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -89,15 +88,20 @@ class LogIn extends StatelessWidget {
                   print("Login Successful");
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ViewAll(name, pass)),
+                    MaterialPageRoute(builder: (context) => MyMenu(name, pass)),
                   );
                 } else {
-                  print("Wrong UserName or Passord");
+                  final message = SnackBar(
+                    content: Text("Wrong UserName or Passord " + na),
+                    backgroundColor: Colors.pink,
+                  );
+                  Scaffold.of(context).showSnackBar((message));
+                  /*
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              Display(name, pass, "wrong password " + name)));
+                              Display(name, pass, "wrong password " + name)));*/
                 }
               },
               child: Container(
@@ -124,7 +128,7 @@ class LogIn extends StatelessWidget {
               print("Signing Up");
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MyLogin(name, pass)),
+                MaterialPageRoute(builder: (context) => MySignIn(name, pass)),
               );
             },
             child: Container(

@@ -1,6 +1,20 @@
 import 'package:flutter/material.dart';
 
 class ViewAll extends StatelessWidget {
+  ViewAll(this.name,this.pass);
+  var name,pass;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+          body: ViewBody()),
+    );
+  }
+}
+
+class ViewBody extends StatelessWidget {
   var data = [
     {"name": "Reuel", "age": "21", "rollno": 3, "paidstatus": true},
     {"name": "Rahul", "age": "23", "rollno": 4, "paidstatus": false},
@@ -14,13 +28,9 @@ class ViewAll extends StatelessWidget {
     {"name": "Kim", "age": "25", "rollno": 12, "paidstatus": false},
     {"name": "Jim", "age": "26", "rollno": 13, "paidstatus": true},
   ];
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-          body: Container(
+    return Container(
               child: ListView.builder(
                 itemCount: data.length,
                 itemBuilder: (context, index) {
@@ -50,7 +60,6 @@ class ViewAll extends StatelessWidget {
                     ),
                   );
                 },
-              ))),
-    );
+              ));
   }
 }

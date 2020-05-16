@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermbcetapp/main.dart';
 
-class MyLogin extends StatelessWidget {
-  MyLogin(this.name, this.pass);
+class MySignIn extends StatelessWidget {
+  MySignIn(this.name, this.pass);
 
   var name, pass;
 
@@ -24,6 +24,10 @@ class SignIn extends StatelessWidget {
   TextEditingController admnocontroller = TextEditingController();
   TextEditingController passcontroller = TextEditingController();
   TextEditingController usercontroller = TextEditingController();
+
+  var msg = SnackBar(
+    content: Text("Empty Fields"),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +57,8 @@ class SignIn extends StatelessWidget {
                       TextField(
                         controller: namecontroller,
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0)),
                             hintText: "Enter Name"),
                       ),
                       SizedBox(
@@ -63,7 +68,8 @@ class SignIn extends StatelessWidget {
                         keyboardType: TextInputType.numberWithOptions(),
                         controller: rollnocontroller,
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0)),
                             hintText: "Enter Roll No:"),
                       ),
                       SizedBox(
@@ -73,7 +79,8 @@ class SignIn extends StatelessWidget {
                         keyboardType: TextInputType.numberWithOptions(),
                         controller: admnocontroller,
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0)),
                             hintText: "Enter Admission No:"),
                       ),
                       SizedBox(
@@ -82,7 +89,8 @@ class SignIn extends StatelessWidget {
                       TextField(
                         controller: usercontroller,
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0)),
                             hintText: "Enter Username"),
                       ),
                       SizedBox(
@@ -92,7 +100,8 @@ class SignIn extends StatelessWidget {
                         controller: passcontroller,
                         obscureText: true,
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0)),
                             hintText: "Enter Password"),
                       ),
                       SizedBox(
@@ -110,11 +119,19 @@ class SignIn extends StatelessWidget {
                           print(getAdno);
                           print(getUser);
                           print(getPass);
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      MBCET(getName, getPass)));
+                          if (getPass == "" ||
+                              getName == "" ||
+                              getRoll == "" ||
+                              getAdno == "" ||
+                              getUser == "")
+                            Scaffold.of(context).showSnackBar(msg);
+                          else {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        MBCET(getName, getPass)));
+                          }
                         },
                         child: Container(
                           decoration: BoxDecoration(

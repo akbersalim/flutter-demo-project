@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermbcetapp/main.dart';
 
-class ViewAll extends StatelessWidget {
-  ViewAll(this.name, this.pass);
+class ViewandAdd extends StatelessWidget {
+  ViewandAdd(this.name, this.pass);
 
   var name, pass;
 
@@ -75,6 +74,31 @@ class _MyBodyState extends State<MyBody> {
     "https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg",
     "https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg",
   ];
+  List _fee = ["not paid", "paid"];
+  List<DropdownMenuItem<String>> _dropDownMenuItems;
+  String _feestat;
+
+  void initState() {
+    _dropDownMenuItems = buildAndGetDropDownMenuItems(_fee);
+    _feestat = _dropDownMenuItems[0].value;
+    super.initState();
+  }
+
+  List<DropdownMenuItem<String>> buildAndGetDropDownMenuItems(List fruits) {
+    List<DropdownMenuItem<String>> items = List();
+    for (String fruit in fruits) {
+      items.add(DropdownMenuItem(value: fruit, child: Text(fruit)));
+    }
+    return items;
+  }
+
+  void changedDropDownItem(String selectedFruit) {
+    setState(() {
+      _feestat = selectedFruit;
+    });
+  }
+
+  var a = 0;
 
   Widget build(BuildContext context) {
     TextEditingController namecontroller = TextEditingController();
@@ -124,7 +148,14 @@ class _MyBodyState extends State<MyBody> {
                   hintText: "Roll No:",
                   border: OutlineInputBorder()),
             ),
-            SizedBox(height: 10.0,),
+            SizedBox(
+              height: 10.0,
+            ),
+            DropdownButton(
+              value: _feestat,
+              items: _dropDownMenuItems,
+              onChanged: changedDropDownItem,
+            ),
             MaterialButton(
               color: Colors.grey,
               focusColor: Colors.white,
@@ -141,10 +172,14 @@ class _MyBodyState extends State<MyBody> {
                 rnocontroller.clear();
                 agecontroller.clear();
                 setState(() {
-                  name.add(nam.toString());
-                  rollno.add(int.parse(rno));
-                  age.add(int.parse(ag));
-                  paidstatus.add(false);
+                  nam == "" ? name.add(""):name.add(nam.toString());
+                  rno == "" ? rollno.add(int.parse("0")):rollno.add(int.parse(rno)) ;
+                  ag == "" ?  age.add(int.parse("0")):age.add(int.parse(ag)) ;
+
+                  if (_feestat == "paid")
+                    paidstatus.add(false);
+                  else
+                    paidstatus.add(true);
                   imag.add(
                       "https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg");
                 });
@@ -154,11 +189,14 @@ class _MyBodyState extends State<MyBody> {
                 style: TextStyle(color: Colors.purple),
               ),
             ),
+            SizedBox(
+              height: 10.0,
+            ),
             Container(
-              height: MediaQuery.of(context).size.height - 300,
+              height: MediaQuery.of(context).size.height - 360,
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: name.length == null ? 0 : name.length,
+                itemCount: rollno.length == null ? 0 : rollno.length,
                 itemBuilder: (context, index) {
                   return Card(
                     elevation: 3.0,
@@ -177,8 +215,10 @@ class _MyBodyState extends State<MyBody> {
                       trailing: paidstatus[index]
                           ? FlatButton(child: Text("Paid"))
                           : MaterialButton(
-                        color: Colors.purple,
+                              color: Colors.purple,
                               colorBrightness: Brightness.dark,
+                              elevation: 10.0,
+                              highlightElevation: 1.0,
                               onPressed: () {
                                 print("Clicked");
                                 setState(() {
